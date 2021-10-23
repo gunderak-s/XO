@@ -29,10 +29,6 @@ public class GameXO {
 
     }
 
-    boolean checkGameOver () {
-        return true;
-    }
-
     boolean isEndGame() {
         if ((field[0][0]=='X') &(field[1][0]=='X') &(field[2][0]=='X'))
         return true;

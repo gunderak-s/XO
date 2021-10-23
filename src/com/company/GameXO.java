@@ -3,7 +3,10 @@ package com.company;
 import java.util.Random;
 
 public class GameXO {
-    char [][] field;
+    char [][] field={{' ',' ','X'},
+                     {' ','X','X'},
+                     {' ',' ','O'},
+    };
 
 
     public void randomComp(){

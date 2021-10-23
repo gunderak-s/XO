@@ -9,7 +9,7 @@ public class GameXO {
     };
 
 
-    public void randomComp(){
+    public void randomComp(){   // Вови
         Random random=new Random();
         boolean good=true;
         while (good) {
@@ -24,12 +24,12 @@ public class GameXO {
     }
 
 
-    void printField () {
+    void printField () {    // Андрія
 
 
     }
 
-    boolean isEndGame() {
+    boolean isEndGame() {   // Олени
         if ((field[0][0]=='X') &(field[1][0]=='X') &(field[2][0]=='X'))
             return true;
         return false;

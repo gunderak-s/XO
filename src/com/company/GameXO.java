@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class GameXO {
@@ -7,6 +8,13 @@ public class GameXO {
                      {'X','X','X'},
                      {'X',' ','O'},
     };
+    ArrayList<Move> moves;
+    final boolean firstMoveIsHumans;
+    Tree gameOXtree;
+
+    public GameXO(boolean firstMoveIsHumans) {
+        this.firstMoveIsHumans = firstMoveIsHumans;
+    }
 
 
     public void randomComp(){   // Вови

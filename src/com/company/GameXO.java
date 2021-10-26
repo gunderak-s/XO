@@ -19,16 +19,14 @@ public class GameXO {
 
     void gameProgress(){
         // рандомний вибір ходу
-        boolean hM =firstMoveIsHumans;
-        while(isEndGame()==GameStatus.Game){
+
+        while(){
+
             printField ();
-            if(hM)
-                humansMove();
-            else
-                randomComp();
-            hM =!hM;
         }
-        // додати перевірку статусу
+
+
+
     }
 
     public void randomComp(){   // Вови
@@ -47,19 +45,45 @@ public class GameXO {
 
 
     void printField () {    // Андрія
-        for (int i=0;i<=2;i++) {
-            for (int j = 0; j <= 2; j++)
-                System.out.print(field[i][j]);
-            System.out.println();
-        }
+
+
     }
 
     GameStatus isEndGame() {   // Олени
-        for (int i=0;i<=2;i++)
-            if ((field[0][i]=='X') &(field[1][i]=='X') &(field[2][i]=='X'))
-                return GameStatus.Win;
-
-
+        if ((field[0][0]=='X') &(field[1][0]=='X') &(field[2][0]=='X'))
+            return GameStatus.Win;
+            return true;
+        if ((field[0][1]=='X') &(field[1][1]=='X') &(field[2][1]=='X'))
+            return true;
+        if ((field[0][2]=='X') &(field[1][2]=='X') &(field[2][2]=='X'))
+            return true;
+        if ((field[0][0]=='X') &(field[0][1]=='X') &(field[0][2]=='X'))
+            return true;
+        if ((field[1][0]=='X') &(field[1][1]=='X') &(field[1][2]=='X'))
+            return true;
+        if ((field[0][2]=='X') &(field[2][1]=='X') &(field[2][2]=='X'))
+            return true;
+        if ((field[0][0]=='X') &(field[1][1]=='X') &(field[2][2]=='X'))
+            return true;
+        if ((field[0][2]=='X') &(field[1][1]=='X') &(field[2][0]=='X'))
+            return true;
+        if ((field[0][0]=='0') &(field[1][0]=='0') &(field[2][0]=='0'))
+            return true;
+        if ((field[0][1]=='0') &(field[1][1]=='0') &(field[2][1]=='0'))
+            return true;
+        if ((field[0][2]=='0') &(field[1][2]=='0') &(field[2][2]=='0'))
+            return true;
+        if ((field[0][0]=='0') &(field[0][1]=='0') &(field[0][2]=='0'))
+            return true;
+        if ((field[1][0]=='0') &(field[1][1]=='0') &(field[1][2]=='0'))
+            return true;
+        if ((field[0][2]=='0') &(field[2][1]=='0') &(field[2][2]=='0'))
+            return true;
+        if ((field[0][0]=='0') &(field[1][1]=='0') &(field[2][2]=='0'))
+            return true;
+        if ((field[0][2]=='0') &(field[1][1]=='0') &(field[2][0]=='0'))
+            return true;
+        return false;
 
     }
 }

@@ -6,21 +6,21 @@ import java.util.Scanner;
 
 public class GameXO {
     char [][] field={{'X',' ','X'},
-                     {'X','X','X'},
+                     {' ',' ','X'},
                      {'X',' ','O'},
     };
     ArrayList<Move> moves;
     final boolean firstMoveIsHumans;
     Tree gameOXtree;
-
-    public GameXO(boolean firstMoveIsHumans) {
-        this.firstMoveIsHumans = firstMoveIsHumans;
-    }
     GameStatus gameStatus;
 
+    public GameXO(boolean firstMoveIsHumans) {  // Міші
+        this.firstMoveIsHumans = firstMoveIsHumans;
+    }
+
     void gameProgress(){
-        // рандомний вибір ходу
         boolean hM =firstMoveIsHumans;
+
         while(isEndGame()==GameStatus.Game){
             printField ();
             if(hM)
@@ -29,7 +29,13 @@ public class GameXO {
                 randomComp();
             hM =!hM;
         }
-        // додати перевірку статусу
+        if (isEndGame()==GameStatus.Draw)
+            System.out.println("Нічия");
+        else
+            if (hM)
+                System.out.println("Комп'ютер переміг");
+            else
+                System.out.println("Людина перемогла");
     }
 
     public void randomComp(){   // Вови
@@ -67,7 +73,6 @@ public class GameXO {
 
     }
 
-
     void printField () {    // Андрія
         for (int i=0;i<=2;i++) {
             for (int j = 0; j <= 2; j++)
@@ -77,17 +82,19 @@ public class GameXO {
     }
 
     GameStatus isEndGame() {   // Олени
+
        for (int i=0; i<=2; i++) {
-           if ((field[i][0] == 'X') & (field[i][0] == 'X') & (field[i][0] == 'X'))
+           if ((field[i][0] == 'X') & (field[i][1] == 'X') & (field[i][2] == 'X'))
                return GameStatus.Win;
-           if ((field[0][i] == 'X') &(field[0][i])=='X' &(field[0][i]=='X'))
+           if ((field[0][i] == 'X') & ((field[1][i])=='X') & (field[2][i]=='X'))
                return GameStatus.Win;
-           if ((field[0][0] =='X') &(field[1][1]=='X') &(field[2][2]=='X'))
-               return GameStatus.Win;
-           if ((field[0][2]=='X') &(field[1][1]=='X') &(field[2][0]=='X'))
-               return GameStatus.Win;
+
        }
-        return false;
+        if ((field[0][0] =='X') &(field[1][1]=='X') &(field[2][2]=='X'))
+            return GameStatus.Win;
+        if ((field[0][2]=='X') &(field[1][1]=='X') &(field[2][0]=='X'))
+            return GameStatus.Win;
+        return GameStatus.Game;
 
     }
 }

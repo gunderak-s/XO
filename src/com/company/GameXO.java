@@ -5,10 +5,7 @@ import java.util.Random;
 import java.util.Scanner;
 
 public class GameXO {
-    char [][] field={{'X',' ','X'},
-                     {' ',' ','X'},
-                     {'X',' ','O'},
-    };
+    char [][] field;
     ArrayList<Move> moves;
     final boolean firstMoveIsHumans;
     Tree gameOXtree;
@@ -16,9 +13,15 @@ public class GameXO {
 
     public GameXO(boolean firstMoveIsHumans) {  // Міші
         this.firstMoveIsHumans = firstMoveIsHumans;
+        gameOXtree=null;
+        char [][] field={{'X',' ','X'},
+                         {' ',' ','X'},
+                         {'X',' ','O'},
+        };
     }
 
     void gameProgress(){
+
         boolean hM =firstMoveIsHumans;
 
         while(isEndGame()==GameStatus.Game){

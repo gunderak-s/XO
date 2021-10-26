@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class GameXO {
     char [][] field;
-    ArrayList<Move> moves;
+    ArrayList<Move> moves;  // Міші
     final boolean firstMoveIsHumans;
     Tree gameOXtree;
     GameStatus gameStatus;
@@ -19,11 +19,8 @@ public class GameXO {
                          {'X',' ','O'},
         };
     }
-
-    void gameProgress(){
-
+    void gameProgress(){    // спільний
         boolean hM =firstMoveIsHumans;
-
         while(isEndGame()==GameStatus.Game){
             printField ();
             if(hM)
@@ -40,7 +37,6 @@ public class GameXO {
             else
                 System.out.println("Людина перемогла");
     }
-
     public void randomComp(){   // Вови
         Random random=new Random();
         boolean good=true;
@@ -54,7 +50,7 @@ public class GameXO {
             }
         }
     }
-    void humansMove(){
+    void humansMove(){  // Міші
         int co = 0;
         int x = 0;
         int y = 0;
@@ -70,12 +66,9 @@ public class GameXO {
             if(x>=1 && x<=3 &&y>=1 && y<=3 && field[x-1][y-1]==' ')
                 a = false;
             else a=true;
-
         } while (a);
         field[x-1][y-1]='X';
-
     }
-
     void printField () {    // Андрія
         for (int i=0;i<=2;i++) {
             for (int j = 0; j <= 2; j++)
@@ -83,22 +76,18 @@ public class GameXO {
             System.out.println();
         }
     }
-
     GameStatus isEndGame() {   // Олени
-
        for (int i=0; i<=2; i++) {
            if ((field[i][0] == 'X') & (field[i][1] == 'X') & (field[i][2] == 'X'))
                return GameStatus.Win;
            if ((field[0][i] == 'X') & ((field[1][i])=='X') & (field[2][i]=='X'))
                return GameStatus.Win;
-
        }
         if ((field[0][0] =='X') &(field[1][1]=='X') &(field[2][2]=='X'))
             return GameStatus.Win;
         if ((field[0][2]=='X') &(field[1][1]=='X') &(field[2][0]=='X'))
             return GameStatus.Win;
         return GameStatus.Game;
-
     }
 }
 enum GameStatus{

@@ -1,7 +1,7 @@
 package com.company;
 
 public class TestGameOX {
-    public static void main(String[] args) {
+    public static void main(String[] args) {    // спільний
         GameXO game1=new GameXO(true);
         game1.gameProgress();
         //boolean b=game1.isEndGame();

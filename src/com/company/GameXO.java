@@ -2,6 +2,7 @@ package com.company;
 
 import java.util.ArrayList;
 import java.util.Random;
+import java.util.Scanner;
 
 public class GameXO {
     char [][] field={{'X',' ','X'},
@@ -43,6 +44,27 @@ public class GameXO {
             } else {good=true;
             }
         }
+    }
+    void humansMove(){
+        int co = 0;
+        int x = 0;
+        int y = 0;
+        boolean a = true;
+        Scanner scanner = new Scanner(System.in);
+        do {
+            System.out.println("Введіть координати від 11 до 33");
+            if (scanner.hasNextInt()) {
+                co = scanner.nextInt();
+                x = co / 10;
+                y = co % 10;
+            }
+            if(x>=1 && x<=3 &&y>=1 && y<=3 && field[x-1][y-1]==' ')
+                a = false;
+            else a=true;
+
+        } while (a);
+        field[x-1][y-1]='X';
+
     }
 
 
